@@ -4,8 +4,11 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:3000'
+  api: 'http://localhost:3000',
+  cognitoUserPoolId: "us-east-1_a04HjizWB",
+  cognitoAppClientId: "7adcep6hdusmkkd6g2e3tolqsr"
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
