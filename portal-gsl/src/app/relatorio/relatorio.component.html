@@ -1,1 +1,50 @@
-<p>relatorio works!</p>
+<label for="cars">Escolha o mês:</label>
+  <select name="mes" id="mes" (change)="onChange($event.target.value)">
+    <option value="1">Janeiro</option>
+    <option value="2">Fevereiro</option>
+    <option value="3">Março</option>
+    <option value="4">Abril</option>
+    <option value="5">Maio</option>
+    <option value="6">Junho</option>
+  </select>
+<button type="button" class="btn btn-info" (click)="relatorio()">
+    Obter relatorio
+</button>
+
+<div *ngIf="relatorio_mes">
+    <b>Receita bruta:</b> {{relatorio_mes.receitaBruta}} <br>
+    <b>Receita Liquida:</b> {{relatorio_mes.receitaLiquida}} <br>
+    <b>Folha de pagamentos:</b> {{relatorio_mes.folhaPagamentoColaboradores}} <br>
+
+    <h5>Entradas (+)</h5>
+    <table>
+        <thead>
+            <th>Cliente</th>
+            <th>Valor</th>
+            <th>Data</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entrada of relatorio_mes.entradas">
+                <td>{{entrada.nomeCliente}}</td>
+                <td>{{entrada.valor}}</td>
+                <td>{{entrada.data}}</td>
+          </tr>
+        </tbody>
+    </table>
+
+    <h5>Saidas (+)</h5>
+    <table>
+        <thead>
+            <th>Cliente</th>
+            <th>Valor</th>
+            <th>Data</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entrada of relatorio_mes.entradas">
+                <td>{{entrada.nomeCliente}}</td>
+                <td>{{entrada.valor}}</td>
+                <td>{{entrada.data}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>

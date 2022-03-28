@@ -4,7 +4,13 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:3000'
+ // apiMGE: 'http://localhost:8091',
+  //apiMIC: 'http://localhost:8092',
+ // apiMSC: '',
+
+  apiMGE: 'https://gestao-estrategia.herokuapp.com',
+  apiMIC: 'http://localhost:8092',
+  apiMSC: '',
 };
 
 /*

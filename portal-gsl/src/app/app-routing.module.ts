@@ -5,6 +5,8 @@ import { HomeComponent } from './layout/home/home.component';
 import { AuthComponent } from './layout/auth/auth.component';
 import { LoginComponent } from './autenticacao/login/login.component';
 import { AuthGuard } from './guard/shared/auth.guard';
+import { IndicadoresComponent } from './indicadores/indicadores.component';
+import { EntregasComponent } from './entregas/entregas.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: '', component: RelatorioComponent },
-    ],
+      { path: 'indicadores', component: IndicadoresComponent},
+      { path: 'entregas', component: EntregasComponent}
+    ], 
     canActivate: [AuthGuard]
   },
   {

@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './layout/home/home.component';
 import { LoginComponent } from './autenticacao/login/login.component';
 import { AuthComponent } from './layout/auth/auth.component';
+import { IndicadoresComponent } from './indicadores/indicadores.component';
+import { EntregasComponent } from './entregas/entregas.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AuthComponent } from './layout/auth/auth.component';
     RelatorioComponent,
     HomeComponent,
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    IndicadoresComponent,
+    EntregasComponent
   ],
   imports: [
     BrowserModule,
