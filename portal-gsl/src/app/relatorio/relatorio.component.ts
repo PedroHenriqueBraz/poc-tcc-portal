@@ -13,6 +13,8 @@ export class RelatorioComponent implements OnInit {
 
   relatorio_mes = null;
   mes_selecionado = 1;
+  columnsToDisplay = ['nomeCliente', 'valor', 'data'];
+  columnsToDisplayFor = ['nomeFornecedor', 'valor', 'data'];
 
   ngOnInit(): void {
   }
@@ -20,11 +22,13 @@ export class RelatorioComponent implements OnInit {
   relatorio(){
     this.http.getRelatorio(this.mes_selecionado).subscribe(r => {
       this.relatorio_mes = r;
+      console.log(this.mes_selecionado)
       console.log(this.relatorio_mes)
     });
   }
 
   onChange(event){
-    this.mes_selecionado = event;
+    console.log(event)
+    this.mes_selecionado = event.value;
   }
 }

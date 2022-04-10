@@ -1,50 +1,55 @@
-<label for="cars">Escolha o mês:</label>
-  <select name="mes" id="mes" (change)="onChange($event.target.value)">
-    <option value="1">Janeiro</option>
-    <option value="2">Fevereiro</option>
-    <option value="3">Março</option>
-    <option value="4">Abril</option>
-    <option value="5">Maio</option>
-    <option value="6">Junho</option>
-  </select>
-<button type="button" class="btn btn-info" (click)="relatorio()">
-    Obter relatorio
-</button>
-
+<mat-form-field appearance="fill">
+    <mat-label>Selecione um mês</mat-label>
+    <mat-select disableRipple (selectionChange)="onChange($event)">
+      <mat-option [value]="1">Janeiro</mat-option>
+      <mat-option [value]="2">Fevereiro</mat-option>
+      <mat-option [value]="3">Março</mat-option>
+      <mat-option [value]="4">Abril</mat-option>
+    </mat-select>
+  </mat-form-field>
+<button mat-raised-button color="primary" (click)="relatorio()">Obter relatorio</button>
+<br>
 <div *ngIf="relatorio_mes">
     <b>Receita bruta:</b> {{relatorio_mes.receitaBruta}} <br>
     <b>Receita Liquida:</b> {{relatorio_mes.receitaLiquida}} <br>
     <b>Folha de pagamentos:</b> {{relatorio_mes.folhaPagamentoColaboradores}} <br>
 
-    <h5>Entradas (+)</h5>
-    <table>
-        <thead>
-            <th>Cliente</th>
-            <th>Valor</th>
-            <th>Data</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let entrada of relatorio_mes.entradas">
-                <td>{{entrada.nomeCliente}}</td>
-                <td>{{entrada.valor}}</td>
-                <td>{{entrada.data}}</td>
-          </tr>
-        </tbody>
+    <br>
+    <h3>Saidas (-)</h3>
+
+    <table mat-table [dataSource]="relatorio_mes.saidas" class="mat-elevation-z8">
+      <ng-container matColumnDef="nomeFornecedor">
+        <th mat-header-cell *matHeaderCellDef> Fornecedor </th>
+        <td mat-cell *matCellDef="let element"> {{element.nomeFornecedor}} </td>
+      </ng-container>
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> Valor </th>
+        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+      </ng-container>
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef> Data </th>
+        <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+      </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplayFor"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplayFor"></tr>
     </table>
 
-    <h5>Saidas (+)</h5>
-    <table>
-        <thead>
-            <th>Cliente</th>
-            <th>Valor</th>
-            <th>Data</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let entrada of relatorio_mes.entradas">
-                <td>{{entrada.nomeCliente}}</td>
-                <td>{{entrada.valor}}</td>
-                <td>{{entrada.data}}</td>
-          </tr>
-        </tbody>
+    <br>
+    <h3>Entradas (+)</h3>
+    <table mat-table [dataSource]="relatorio_mes.entradas" class="mat-elevation-z8">
+      <ng-container matColumnDef="nomeCliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let element"> {{element.nomeCliente}} </td>
+      </ng-container>
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> Valor </th>
+        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+      </ng-container>
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef> Data </th>
+        <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+      </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
     </table>
 </div>

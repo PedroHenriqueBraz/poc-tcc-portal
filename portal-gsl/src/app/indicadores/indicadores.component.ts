@@ -18,6 +18,7 @@ export class IndicadoresComponent implements OnInit {
       this.indicadores = i;
      // this.indicadores.clienteRentavel;
       console.log(this.indicadores);
+      console.log(this.indicadores.clienteRentavel);
     });
   }
 

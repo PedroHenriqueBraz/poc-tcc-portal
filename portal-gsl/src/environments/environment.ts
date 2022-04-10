@@ -10,7 +10,7 @@ export const environment = {
 
   apiMGE: 'https://gestao-estrategia.herokuapp.com',
   apiMIC: 'http://localhost:8092',
-  apiMSC: '',
+  apiMSC: 'https://servicos-ao-cliente.herokuapp.com',
 };
 
 /*
