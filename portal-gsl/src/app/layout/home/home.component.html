@@ -1,6 +1,11 @@
 <header>
     <nav class="navbar fixed-top navbar-dark bg-primary">
-        <a class="navbar-brand" [routerLink]="['/']">GSL</a>
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/relatorio']">Relatório Financeiro</button>
+  <button mat-menu-item [routerLink]="['/indicadores']">Indicadores</button>
+  <button mat-menu-item [routerLink]="['/entregas']">Entregas</button>
+</mat-menu>
     </nav>
   </header>
   
@@ -9,3 +14,4 @@
         <router-outlet></router-outlet>
     </main>
   </section>
+
