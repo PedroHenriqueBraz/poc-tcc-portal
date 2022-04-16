@@ -19,6 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,12 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatCardModule, 
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: 'dev-kx6dw22k.us.auth0.com',
+      clientId: '7RRy0WQr1hfrYCIuEZZDDIy1xLKagztp'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

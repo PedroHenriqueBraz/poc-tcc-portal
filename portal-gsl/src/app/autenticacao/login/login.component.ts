@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from '../shared/autenticacao.service';
+// Import the AuthService type from the SDK
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   };
 
   constructor( private autService: AutenticacaoService,
-    private router: Router) { }
+    private router: Router, 
+    public auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +29,7 @@ export class LoginComponent implements OnInit {
       console.log(`Login efetuado: ${result}`);
 
       // navego para a rota vazia novamente
-      this.router.navigate(['']);
+      this.router.navigate(['/relatorio']);
     } catch (error) {
       console.error(error);
     }
