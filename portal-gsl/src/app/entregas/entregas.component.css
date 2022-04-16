@@ -50,6 +50,18 @@ tr.example-element-row:not(.example-expanded-row):active {
   color: blue
 }
 
-.status{
+.green{
   color: darkgreen
+}
+
+.red{
+  color: red
+}
+
+.black{
+  color: black
+}
+
+.yellow{
+  color: yellow
 }

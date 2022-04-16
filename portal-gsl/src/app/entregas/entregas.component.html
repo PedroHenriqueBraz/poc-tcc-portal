@@ -55,7 +55,7 @@
 <div *ngFor="let etapa of detalhes.etapas">
   <mat-card>
     <p class="tipo"> {{etapa.tipoEtapa.nome}}</p>
-    <p class="status"> {{etapa.statusEtapa.nome}}</p>
+    <p [ngClass]="{'Cancelado' : 'red', 'Finalizado' : 'green', 'Em Andamento' : 'yellow', 'Pendente' : 'black'}[etapa.statusEtapa.nome]"> {{etapa.statusEtapa.nome}}</p>
     <p> Finalizado em: {{etapa.finalizadaEm}}</p>
   </mat-card>
 </div>
