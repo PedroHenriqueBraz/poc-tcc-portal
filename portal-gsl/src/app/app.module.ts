@@ -12,7 +12,13 @@ import { LoginComponent } from './autenticacao/login/login.component';
 import { AuthComponent } from './layout/auth/auth.component';
 import { IndicadoresComponent } from './indicadores/indicadores.component';
 import { EntregasComponent } from './entregas/entregas.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,14 @@ import { EntregasComponent } from './entregas/entregas.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCardModule, 
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

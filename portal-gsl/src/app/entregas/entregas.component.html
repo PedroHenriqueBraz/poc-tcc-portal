@@ -1,1 +1,62 @@
-<p>entregas works!</p>
+<mat-form-field appearance="fill">
+  <mat-label>Selecione um cliente</mat-label>
+  <mat-select disableRipple (selectionChange)="onChange($event)">
+    <mat-option [value]="1">Carrefour</mat-option>
+    <mat-option [value]="2">Atacadao</mat-option>
+    <mat-option [value]="3">Simpatia</mat-option>
+    <mat-option [value]="4">Leroy</mat-option>
+    <mat-option [value]="4">Mercadao</mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="obterEntregas()">Obter entregas</button>
+
+<div *ngIf="entregas">
+  <table mat-table [dataSource]="entregas" multiTemplateDataRows class="mat-elevation-z8">
+    <ng-container matColumnDef="clienteId">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.clienteId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="mercadoriaId">
+      <th mat-header-cell *matHeaderCellDef> Mercadoria </th>
+      <td mat-cell *matCellDef="let element"> {{element.mercadoriaId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="valorFrete">
+      <th mat-header-cell *matHeaderCellDef> Valor Frete </th>
+      <td mat-cell *matCellDef="let element"> {{element.valorFrete}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="dataEntrega">
+      <th mat-header-cell *matHeaderCellDef> Data Entrega </th>
+      <td mat-cell *matCellDef="let element"> {{element.dataEntrega}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="detalhes">
+      <th mat-header-cell *matHeaderCellDef> Detalhes </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="verDetalhes(element)">
+          <mat-icon>visibility</mat-icon>
+        </button>  
+      </td>
+    </ng-container>
+
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+   
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+</div>
+
+<br>
+<mat-card *ngIf="detalhes">
+<p>Previsão entrega: {{detalhes.dataPrevisao}}</p>
+<p>Data de entrega: {{detalhes.dataEntrega}}</p>
+<div *ngFor="let etapa of detalhes.etapas">
+  <mat-card>
+    <p class="tipo"> {{etapa.tipoEtapa.nome}}</p>
+    <p [ngClass]="{'Cancelado' : 'red', 'Finalizado' : 'green', 'Em Andamento' : 'yellow', 'Pendente' : 'black'}[etapa.statusEtapa.nome]"> {{etapa.statusEtapa.nome}}</p>
+    <p> Finalizado em: {{etapa.finalizadaEm}}</p>
+  </mat-card>
+</div>
+</mat-card>

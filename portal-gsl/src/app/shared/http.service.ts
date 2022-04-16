@@ -18,4 +18,16 @@ export class HttpService {
   getIndicadores() {
     return this.http.get<Indicadores>(`${environment.apiMGE}/indicadores`);
   }
+
+  getEntregas(idEntrega) {
+    return this.http.get<any>(`${environment.apiMSC}/fluxoentrega/${idEntrega}`);
+  }
+
+  getEntregasPorCliente(idCliente) {
+    return this.http.get<any>(`${environment.apiMSC}/fluxoentrega/cliente/${idCliente}`);
+  }
+
+  getCliente(id) {
+    return this.http.get<any>(`${environment.apiMIC}/cliente/${id}`);
+  }
 }
